@@ -79,12 +79,54 @@ h1 {
     font-size: 1.2em;
 }
 
-#scoreboard {
-    margin-top: 2em;
+/* Formspree Form Styling */
+#partnership-inquiry form {
     display: flex;
-    justify-content: center;
-    gap: 40px;
-    font-size: 1.2em;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+#partnership-inquiry label {
+    text-align: left;
+    margin-bottom: -10px;
+    font-weight: 600;
+}
+
+#partnership-inquiry input[type="text"],
+#partnership-inquiry input[type="email"],
+#partnership-inquiry textarea {
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    background-color: var(--button-bg-color);
+    color: var(--button-text-color);
+    transition: border-color 0.3s;
+}
+
+#partnership-inquiry input[type="text"]:focus,
+#partnership-inquiry input[type="email"]:focus,
+#partnership-inquiry textarea:focus {
+    border-color: #2ecc71; /* Highlight on focus */
+    outline: none;
+}
+
+#partnership-inquiry button[type="submit"] {
+    padding: 12px 25px;
+    font-size: 1.1em;
+    border-radius: 5px;
+    border: none;
+    background-color: #2ecc71; /* Green submit button */
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    align-self: center; /* Center the button */
+    width: fit-content;
+}
+
+#partnership-inquiry button[type="submit"]:hover {
+    background-color: #27ae60; /* Darker green on hover */
+    transform: translateY(-2px);
 }
 
 .win-effect {
