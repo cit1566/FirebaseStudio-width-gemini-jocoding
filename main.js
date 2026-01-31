@@ -1,11 +1,18 @@
 window.addEventListener('DOMContentLoaded', () => {
-    const choices = ['rock', 'paper', 'scissors'];
+    const choices = {
+        rock: '✊',
+        paper: '✋',
+        scissors: '✌️'
+    };
+    const choiceKeys = Object.keys(choices);
+
     const playerChoiceDisplay = document.getElementById('player-choice');
     const computerChoiceDisplay = document.getElementById('computer-choice');
     const winnerDisplay = document.getElementById('winner');
     const playerScoreDisplay = document.getElementById('player-score');
     const computerScoreDisplay = document.getElementById('computer-score');
     const themeToggleButton = document.getElementById('theme-toggle');
+    const winEffectElement = document.getElementById('win-effect');
 
     let playerScore = 0;
     let computerScore = 0;
@@ -32,9 +39,15 @@ window.addEventListener('DOMContentLoaded', () => {
 
     applyTheme();
 
+    function showWinEffect() {
+        winEffectElement.classList.add('show');
+        setTimeout(() => {
+            winEffectElement.classList.remove('show');
+        }, 1500); // Animation duration is 1.5s
+    }
 
     function playGame(playerChoice) {
-        const computerChoice = choices[Math.floor(Math.random() * choices.length)];
+        const computerChoice = choiceKeys[Math.floor(Math.random() * choiceKeys.length)];
         let winner = '';
 
         if (playerChoice === computerChoice) {
@@ -46,13 +59,14 @@ window.addEventListener('DOMContentLoaded', () => {
         ) {
             winner = 'player';
             playerScore++;
+            showWinEffect();
         } else {
             winner = 'computer';
             computerScore++;
         }
 
-        playerChoiceDisplay.textContent = playerChoice;
-        computerChoiceDisplay.textContent = computerChoice;
+        playerChoiceDisplay.textContent = choices[playerChoice];
+        computerChoiceDisplay.textContent = choices[computerChoice];
         winnerDisplay.textContent = winner;
         playerScoreDisplay.textContent = playerScore;
         computerScoreDisplay.textContent = computerScore;
